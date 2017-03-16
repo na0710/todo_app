@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="TODO_style.css">
+<title>TODO_App
+</title>
+</head>
+<body>
+
+<?php
+  require("connect.php"); 
+  require('assign.php');
+  $itemsQuery = $db->prepare("
+       SELECT id,name,done
+       FROM items");
+
+ $itemsQuery->execute();
+
+
+$items =  $itemsQuery->rowCount() ? $itemsQuery : [];
+?>
+
+ <h1 class="header">
+To-do</h1>
+<?php
+    if(!empty($items))  {
+        echo "<ul>" ;
+	foreach($items as $item) {
+          if($item['done'])
+            {
+               echo"<li><span class=\"item done\" " ;
+            }
+           else
+            {
+                echo"<li><span class\"item\" " ;
+             }
+         if($item['done'])
+            {
+               echo "<a href= \"done.php?as=done&item= echo {$item['id']}\" mark as done </a>";
+
+	}  echo "</li>";
+       } echo "</ul>" ;
+}
+     else{
+           echo "<p> You have not added any item yet </p>" ;}      
+ ?> 
+
+<form class="add" action="add_item.php" method="post" >
+<input type="text"name="name" placeholder="Add a new task here" class="input">
+<input type="submit" value="add" class="submit">
+</form>
+
+</body>
+</html>

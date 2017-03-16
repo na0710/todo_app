@@ -1,0 +1,9 @@
+<?php
+    session_start();
+    
+    $db = new PDO('mysql:dbname=db;host=localhost','root','ahsin0710');
+    if(!isset($_SESSION['user_id']))
+    {
+     die('You are not signed in as a User');
+    }
+?>

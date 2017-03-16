@@ -1,0 +1,16 @@
+h1
+{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 60px;
+	font-weight: bold;
+}
+body
+{
+	background-color: #D698E4 ;
+}
+th
+{ 
+	font-size:25px; 
+}
+td{ font-size:20px ;}
+input{content: "+" ;}
